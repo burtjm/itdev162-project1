@@ -9,7 +9,7 @@ namespace StudentDatabaseMVC.Models
             : base(options)
         {
         }
-        public DbSet<Student> Student { get; set; }
+        public DbSet<Student> Students { get; set; }
 
      protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

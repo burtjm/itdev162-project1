@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using StudentDatabaseMVC.Models;
+using StudentDatabaseMVC.Models.DataManager;
+using StudentDatabaseMVC.Models.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 
 namespace StudentDatabaseMVC
 {
@@ -24,8 +22,11 @@ namespace StudentDatabaseMVC
 
         public void ConfigureServices(IServiceCollection services)
         {
-              services.AddDbContext<StudentContext>(options =>
+    services.AddDbContext<StudentContext>(options =>
     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        
+        services.AddScoped<IDataRepository<Student>, StudentManager>();
+  
             services.AddControllers();      }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
