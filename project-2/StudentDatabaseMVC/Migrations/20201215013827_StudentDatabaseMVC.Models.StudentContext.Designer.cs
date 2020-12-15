@@ -10,7 +10,7 @@ using StudentDatabaseMVC.Models;
 namespace StudentDatabaseMVC.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    [Migration("20201214214248_StudentDatabaseMVC.Models.StudentContext")]
+    [Migration("20201215013827_StudentDatabaseMVC.Models.StudentContext")]
     partial class StudentDatabaseMVCModelsStudentContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace StudentDatabaseMVC.Migrations
 
                     b.HasKey("StudentId");
 
-                    b.ToTable("Student");
+                    b.ToTable("Students");
 
                     b.HasData(
                         new

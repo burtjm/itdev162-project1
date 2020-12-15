@@ -32,7 +32,37 @@ namespace StudentDatabaseMVC.Models
                 DateOfBirth = new DateTime(1998, 10, 13),
                 PhoneNumber = "262-555-0929",
                 Email = "bmarsha@gmatc.matc.edu"
-            });
+            }, new Student
+            {
+                StudentId = 3494,
+                FirstName = "Jack",
+                LastName = "Thompson",
+                Program = "Electrical Engineering",
+                DateOfBirth = new DateTime(1997, 01, 15),
+                PhoneNumber = "262-422-2020",
+                Email = "thomj@gmatc.matc.edu"
+            }, new Student
+            {
+                StudentId = 39931,
+                FirstName = "Robin",
+                LastName = "Turner",
+                Program = "Undecided",
+                DateOfBirth = new DateTime(1999, 03, 17),
+                PhoneNumber = "414-555-8888",
+                Email = "turnerr@gmatc.matc.edu"
+            }, new Student
+            {
+                StudentId = 2748,
+                FirstName = "Alison",
+                LastName = "Barnes",
+                Program = "Education",
+                DateOfBirth = new DateTime(1998, 05, 19),
+                PhoneNumber = "262-202-3320",
+                Email = "barnesa@gmatc.matc.edu"
+            }
+            
+            );
+            
         }
 }
 }

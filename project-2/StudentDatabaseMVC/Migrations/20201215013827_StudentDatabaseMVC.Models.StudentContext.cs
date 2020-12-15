@@ -8,7 +8,7 @@ namespace StudentDatabaseMVC.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Student",
+                name: "Students",
                 columns: table => new
                 {
                     StudentId = table.Column<long>(nullable: false)
@@ -22,16 +22,16 @@ namespace StudentDatabaseMVC.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Student", x => x.StudentId);
+                    table.PrimaryKey("PK_Students", x => x.StudentId);
                 });
 
             migrationBuilder.InsertData(
-                table: "Student",
+                table: "Students",
                 columns: new[] { "StudentId", "DateOfBirth", "Email", "FirstName", "LastName", "PhoneNumber", "Program" },
                 values: new object[] { 1232L, new DateTime(2000, 9, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "goodsally@gmail.com", "Sally", "Goodman", "414-555-9102", "Business Administration" });
 
             migrationBuilder.InsertData(
-                table: "Student",
+                table: "Students",
                 columns: new[] { "StudentId", "DateOfBirth", "Email", "FirstName", "LastName", "PhoneNumber", "Program" },
                 values: new object[] { 4828L, new DateTime(1998, 10, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "bmarsha@gmatc.matc.edu", "Marsha", "Bronson", "262-555-0929", "Architecture" });
         }
@@ -39,7 +39,7 @@ namespace StudentDatabaseMVC.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Student");
+                name: "Students");
         }
     }
 }

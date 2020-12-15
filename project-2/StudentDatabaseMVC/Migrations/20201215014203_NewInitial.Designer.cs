@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentDatabaseMVC.Models;
 
 namespace StudentDatabaseMVC.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    partial class StudentContextModelSnapshot : ModelSnapshot
+    [Migration("20201215014203_NewInitial")]
+    partial class NewInitial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,36 +70,6 @@ namespace StudentDatabaseMVC.Migrations
                             LastName = "Bronson",
                             PhoneNumber = "262-555-0929",
                             Program = "Architecture"
-                        },
-                        new
-                        {
-                            StudentId = 3494L,
-                            DateOfBirth = new DateTime(1997, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "thomj@gmatc.matc.edu",
-                            FirstName = "Jack",
-                            LastName = "Thompson",
-                            PhoneNumber = "262-422-2020",
-                            Program = "Electrical Engineering"
-                        },
-                        new
-                        {
-                            StudentId = 39931L,
-                            DateOfBirth = new DateTime(1999, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "turnerr@gmatc.matc.edu",
-                            FirstName = "Robin",
-                            LastName = "Turner",
-                            PhoneNumber = "414-555-8888",
-                            Program = "Undecided"
-                        },
-                        new
-                        {
-                            StudentId = 2748L,
-                            DateOfBirth = new DateTime(1998, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "barnesa@gmatc.matc.edu",
-                            FirstName = "Alison",
-                            LastName = "Barnes",
-                            PhoneNumber = "262-202-3320",
-                            Program = "Education"
                         });
                 });
 #pragma warning restore 612, 618

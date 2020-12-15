@@ -1,37 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using System.Collections.Generic;
 using StudentDatabaseMVC.Models;
+using StudentDatabaseMVC.Models.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace StudentDatabaseMVC.Controllers
 {
-    public class HomeController : Controller
+    [Route("api/student")]
+    [ApiController]
+    public class StudentController : ControllerBase
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IDataRepository<Student> _dataRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public StudentController(IDataRepository<Student> dataRepository)
         {
-            _logger = logger;
+            _dataRepository = dataRepository;
         }
 
-        public IActionResult Index()
+        // GET: api/Student
+        [HttpGet]
+        public IActionResult Get()
         {
-            return View();
+            IEnumerable<Student> students = _dataRepository.GetAll();
+            return Ok(students);
         }
 
-        public IActionResult Privacy()
+        // GET: api/Student/5
+        [HttpGet("{id}", Name = "Get")]
+        public IActionResult Get(long id)
         {
-            return View();
+            Student student = _dataRepository.Get(id);
+
+            if (student == null)
+            {
+                return NotFound("The Student record couldn't be found.");
+            }
+
+            return Ok(student);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        // POST: api/Student
+        [HttpPost]
+        public IActionResult Post([FromBody] Student student)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (student == null)
+            {
+                return BadRequest("Student Not Found");
+            }
+
+            _dataRepository.Add(student);
+            return CreatedAtRoute(
+                  "Get",
+                  new { Id = student.StudentId },
+                  student);
+        }
+
+        // PUT: api/Student/5
+        [HttpPut("{id}")]
+        public IActionResult Put(long id, [FromBody] Student student)
+        {
+            if (student == null)
+            {
+                return BadRequest("Value is null.");
+            }
+
+            Student studentToUpdate = _dataRepository.Get(id);
+            if (studentToUpdate == null)
+            {
+                return NotFound("Record couldn't be found.");
+            }
+
+            _dataRepository.Update(studentToUpdate, student);
+            return NoContent();
+        }
+
+        // DELETE: api/Student/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            Student student = _dataRepository.Get(id);
+            if (student == null)
+            {
+                return NotFound("Record can't be found");
+            }
+
+            _dataRepository.Delete(student);
+            return NoContent();
         }
     }
 }

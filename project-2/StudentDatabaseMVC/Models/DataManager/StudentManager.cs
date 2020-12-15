@@ -18,6 +18,7 @@ namespace StudentDatabaseMVC.Models.DataManager
             return _studentContext.Students.ToList();
         }
 
+
         public Student Get(long id)
         {
             return _studentContext.Students.FirstOrDefault(e => e.StudentId == id);
@@ -33,22 +34,25 @@ namespace StudentDatabaseMVC.Models.DataManager
         {
             student.FirstName = entity.FirstName;
             student.LastName = entity.LastName;
-            student.Email = entity.Email;
+            student.Program = entity.Program;
             student.DateOfBirth = entity.DateOfBirth;
             student.PhoneNumber = entity.PhoneNumber;
-
+            student.Email=entity.Email;
             _studentContext.SaveChanges();
         }
+
+        // StudentId = 1232,
+        //         FirstName = "Sally",
+        //         LastName = "Goodman",
+        //         Program = "Business Administration",
+        //         DateOfBirth = new DateTime(2000, 09, 13),
+        //         PhoneNumber = "414-555-9102",
+        //         Email = "goodsally@gmail.com"
 
         public void Delete(Student student)
         {
             _studentContext.Students.Remove(student);
             _studentContext.SaveChanges();
-        }
-
-        IEnumerable<Student> IDataRepository<Student>.GetAll()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

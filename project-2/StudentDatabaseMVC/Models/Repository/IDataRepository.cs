@@ -7,7 +7,7 @@ namespace StudentDatabaseMVC.Models.Repository
         IEnumerable<TEntity> GetAll();
         TEntity Get(long id);
         void Add(TEntity entity);
-        void Update(TEntity dbEntity, TEntity entity);
-        void Delete(TEntity entity);
+        void Update(Student student, TEntity entity);
+        void Delete(Student student);
     }
 }
